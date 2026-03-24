@@ -2,7 +2,7 @@ import httpx
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from app.core.config import settings
+from backend.app.core.security import settings
 from app.models.users import User as UserModel
 
 
