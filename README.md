@@ -244,5 +244,3 @@ cnab-challenge/
 | Hora         | 43     | 48  | 6       |
 | Dono da loja | 49     | 62  | 14      |
 | Nome da loja | 63     | 81  | 19      |
-
-> O valor está em centavos — dividir por 100 para normalizar.
