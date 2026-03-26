@@ -2,9 +2,6 @@ from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal
 
-from app.models.transactions import TRANSACTION_TYPES
-
-
 @dataclass
 class ParsedLine:
     transaction_type_id: int
@@ -24,9 +21,6 @@ class CNABParseError(Exception):
 
 
 def parse_line(raw: str, line_number: int) -> ParsedLine:
-    if len(raw) < 81:
-        raise CNABParseError(line_number, f"Linha muito curta ({len(raw)} chars, esperado >=81)")
-
     try:
         t_type = int(raw[0])
     except ValueError:

@@ -40,7 +40,7 @@ async def get_stores_with_balance(
     result = await db.execute(
         select(Transaction)
         .where(Transaction.user_id == user_id)
-        .options(selectinload(Transaction.type))
+        .options(selectinload(Transaction.transaction_type))
         .order_by(Transaction.store_name, Transaction.occurred_at)
     )
     transactions = result.scalars().all()
@@ -53,7 +53,7 @@ async def get_stores_with_balance(
         s = stores[t.store_name]
         s["store_owner"] = t.store_owner
         s["transactions"].append(t)
-        s["balance"] += t.amount * t.type.sign
+        s["balance"] += t.amount * t.transaction_type.sign
 
     return [
         StoreBalance(
